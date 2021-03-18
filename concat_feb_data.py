@@ -25,8 +25,10 @@ for post in top_year:
 df = pd.DataFrame({'title':title,'epoch':posted_epoch, 'num_comments':num_com,'score':vote})
 df['created'] = pd.to_datetime(df['epoch'],unit='s', utc=True).dt.tz_convert('US/Pacific')
 
-old_df = pd.read_pickle('dm_top_yearly_20210126.pkl')
+old_df = pd.read_pickle('dm_top_yearly_20210221.pkl')
 
-comb = pd.concat([df,old_df]).drop_duplicates(subset='title')   # 63 posts added this month
+comb = pd.concat([df,old_df]).drop_duplicates(subset='title')   
+# 63 posts added Feb
+# 59 added 3/18
 
-pd.to_pickle(comb,'dm_top_yearly_20210221.pkl')
+pd.to_pickle(comb,'dm_top_yearly_20210318.pkl')
